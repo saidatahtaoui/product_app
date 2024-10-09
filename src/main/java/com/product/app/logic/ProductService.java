@@ -1,8 +1,6 @@
-package com.product.logic.api;
+package com.product.app.logic;
 
-import com.product.dataaccess.Product;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+import com.product.app.dataaccess.Product;
 
 import java.util.List;
 

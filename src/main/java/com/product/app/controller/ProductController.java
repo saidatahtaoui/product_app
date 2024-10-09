@@ -1,11 +1,16 @@
-package com.product.controller;
+package com.product.app.controller;
 
-import com.product.dataaccess.Product;
-import com.product.logic.impl.ProductServiceImpl;
+import com.product.app.dataaccess.Product;
+import com.product.app.logic.ProductServiceImpl;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
+@RequestMapping("/api/v1")
+@AllArgsConstructor
 public class ProductController {
     @Autowired
     private ProductServiceImpl service;
@@ -13,12 +18,11 @@ public class ProductController {
     @PostMapping("products")
     public void createProduct( @RequestBody Product product){
         service.createProduct(product);
-
-
     }
-    @GetMapping("/api/example")
-    public String displayData() {
-        String message = "Welcome to GeeksForGeeks";
-        return message;
+
+    @GetMapping("/get")
+    public List<Product> getAll(){
+        return service.getAllProducts();
     }
+
 }

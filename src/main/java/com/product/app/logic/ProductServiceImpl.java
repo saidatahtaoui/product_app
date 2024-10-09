@@ -1,16 +1,19 @@
-package com.product.logic.impl;
+package com.product.app.logic;
 
-import com.product.dataaccess.Product;
-import com.product.logic.api.ProductService;
-import com.product.repository.ProductRepository;
+import com.product.app.dataaccess.Product;
+import com.product.app.logic.ProductService;
+import com.product.app.repository.ProductRepository;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
+@AllArgsConstructor
 @Slf4j
 public class ProductServiceImpl implements ProductService {
 
