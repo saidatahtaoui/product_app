@@ -1,23 +1,24 @@
 package com.product.app.logic;
 
-import com.product.app.dataaccess.Product;
+import com.product.app.dataaccess.dto.ProductDTO;
+import com.product.app.dataaccess.entities.Product;
 
 import java.util.List;
 
 
 public interface ProductService {
     // Save operation
-    Product createProduct(Product product);
+    ProductDTO createProduct(ProductDTO product);
 
     // Read operation
-    List<Product> getAllProducts();
+    List<ProductDTO> getAllProducts();
 
 
     //get one product by Id
-    Product getProductById(Integer productId);
+    ProductDTO getProductById(Integer productId);
 
     // Update operation
-    Product updateProduct(Product product,
+    ProductDTO updateProduct(ProductDTO product,
                                 Integer productId);
 
     // Delete operation

@@ -1,4 +1,4 @@
-package com.product.app.dataaccess;
+package com.product.app.dataaccess.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Date;
 @Entity
 @Getter
@@ -37,6 +38,7 @@ public class Product {
     @Column(name = "shellId")
     private Integer shellId;
     @Column(name = "inventoryStatus")
+    @Enumerated(EnumType.ORDINAL)
     InventoryStatus inventoryStatus;
     @Column(name = "rating")
     private Integer rating;

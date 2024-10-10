@@ -1,28 +1,25 @@
 package com.product.app.controller;
 
-import com.product.app.dataaccess.Product;
-import com.product.app.logic.ProductServiceImpl;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import com.product.app.dataaccess.dto.ProductDTO;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/v1")
-@AllArgsConstructor
-public class ProductController {
-    @Autowired
-    private ProductServiceImpl service;
+public interface ProductController {
 
-    @PostMapping("products")
-    public void createProduct( @RequestBody Product product){
-        service.createProduct(product);
-    }
+    ResponseEntity<ProductDTO> createProduct(ProductDTO product);
 
-    @GetMapping("/get")
-    public List<Product> getAll(){
-        return service.getAllProducts();
-    }
+    // Read operation
+    List<ProductDTO> getAllProducts();
 
+
+    //get one product by Id
+    ProductDTO getProductById(Integer productId);
+
+    // Update operation
+    ProductDTO updateProduct(ProductDTO product,
+                             Integer productId);
+
+    // Delete operation
+    void deleteProductById(Integer productId);
 }
