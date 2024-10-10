@@ -1,6 +1,5 @@
 package com.product.app.validation;
 
-import com.product.app.dataaccess.entities.InventoryStatus;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 @ControllerAdvice
-public class ValidationHandler extends ResponseEntityExceptionHandler{
+public class  GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
@@ -29,9 +29,17 @@ public class ValidationHandler extends ResponseEntityExceptionHandler{
     }
 
     @ExceptionHandler({ProductNotFoundException.class})
-    public ResponseEntity<Object> handleStudentNotFoundException(ProductNotFoundException exception) {
+    public ResponseEntity<Object> handleProductNotFoundException(ProductNotFoundException exception) {
         return ResponseEntity
-                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .status(HttpStatus.BAD_REQUEST)
                 .body(exception.getMessage());
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> handleGlobalException(Exception ex, WebRequest request) {
+           return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(ex.getMessage());
+    }
+
 }

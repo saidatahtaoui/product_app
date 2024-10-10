@@ -31,19 +31,21 @@ public class ProductControllerImpl implements ProductController{
     }
 
     @Override
-    @GetMapping("/products/{id}")
+    @GetMapping("/products/id/{id}")
     public ProductDTO getProductById(@PathVariable("id") Integer productId) {
         return service.getProductById(productId);
     }
 
     @Override
     @PatchMapping("/products/update/{id}")
-    public ProductDTO updateProduct(ProductDTO product, @PathVariable Integer productId) {
-        return null;
+    public ProductDTO updateProduct( @RequestBody ProductDTO product, @PathVariable("id") Integer productId) {
+        return service.updateProduct(product,productId);
     }
 
     @Override
-    public void deleteProductById(Integer productId) {
+    @DeleteMapping("/products/delete/{id}")
+    public void deleteProductById(@PathVariable("id") Integer productId) {
+        service.deleteProductById(productId);
 
     }
 
